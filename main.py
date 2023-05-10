@@ -13,7 +13,7 @@ centerOffseth = root.winfo_screenheight()/2-400
 centerOffsetw = root.winfo_screenwidth()/3-500
 root.geometry("800x800+%d+%d" % (centerOffsetw, centerOffseth))
 
-canvas = tk.Canvas(root, width=1600, height=800, confine=False)
+canvas = tk.Canvas(root, width=800, height=800)
 canvas.pack() 
 
 img = tk.PhotoImage(file="ball.png")
@@ -30,7 +30,7 @@ while True:
         Y=Y-1
     if canvas.coords(image)[1]<=700:
         Y=Y+1
-    sock.sendto((str(canvas.coords(image)[0]+3)+","+str(canvas.coords(image)[1]-9)).encode(), ("127.0.0.1", 5005))
+    sock.sendto((str(canvas.coords(image)[0])+","+str(canvas.coords(image)[1]-9)).encode(), ("127.0.0.1", 5005))
     print(str(canvas.coords(image)[0])+","+str(canvas.coords(image)[1]))
     canvas.move(image, X, Y)
     root.update()

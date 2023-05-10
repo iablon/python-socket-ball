@@ -11,13 +11,13 @@ centerOffseth = root.winfo_screenheight()/2-400
 centerOffsetw = root.winfo_screenwidth()/3+300
 root.geometry("800x800+%d+%d" % (centerOffsetw, centerOffseth))
 
-canvas = tk.Canvas(root, width=800, height=800, confine=False )
+canvas = tk.Canvas(root, width=800, height=800)
 canvas.pack() 
 coox=0
 img = tk.PhotoImage(file="ball.png")
 image = canvas.create_image(100, 100, image=img)
 while True: 
-    data, addr = sock.recvfrom(2048) 
+    data, addr = sock.recvfrom(1024) 
     print(data.decode())
     if float(data.decode().split(",")[0])>700:
         canvas.itemconfigure(image, state="normal")
